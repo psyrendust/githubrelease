@@ -19,6 +19,22 @@ CLI tool for GitHub release management.
 
 ## Setup
 
+### Install
+
+To install from npm:
+
+```shell
+npm install -g githubrelease
+```
+
+To install from GitHub:
+
+```shell
+npm install -g psyrendust/githubrelease
+```
+
+
+### Prerequisites
 The [githubrelease][githubrelease] cli uses [conventional-github-releaser][conventional-github-releaser] under the hood, which needs the following in order to work:
 
 1. Setup a new [GitHub app token][newtoken]

@@ -6,7 +6,7 @@
   "main": "index.js",
   "author": "Larry Gordon <lgordon@psyrendust.com>",
   "scripts": {
-    "test": "echo \"Error: no test specified, so go write some!\""
+    "test": "echo \"Warning: no test specified, so go write some!\""
   },
   "bin": {
     "githubrelease": "githubrelease",

@@ -113,7 +113,7 @@ runTests() {
 
 # Get the short sha
 getShortSha() {
-  shortsha=$(git rev-parse --short HEAD)
+  echo "$(git rev-parse --short HEAD)"
 }
 
 # Make a backup of the package.json
@@ -370,7 +370,7 @@ if [[ $step -le  2 ]]; then pushAll;                                   fi && # S
 if [[ $step -le  3 ]]; then startOnDevelop && runTests;                fi && # Step 3
 if [[ $step -le  4 ]]; then startOnMaster && rebaseDevelopOntoMaster;  fi && # Step 4
 if [[ $step -ge  5 ]]; then startOnMaster;                             fi && # Step >= 5
-if [[ $step -ge  5 ]]; then getShortSha;                               fi && # Step >= 5
+if [[ $step -ge  5 ]]; then shortsha="$(getShortSha)";                 fi && # Step >= 5
 if [[ $step -le  5 ]]; then backupPackage;                             fi && # Step 5
 if [[ $step -le  6 ]]; then bumpPackage;                               fi && # Step 6
 if [[ $step -le  7 ]]; then updateChangelog;                           fi && # Step 7

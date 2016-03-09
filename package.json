@@ -1,0 +1,29 @@
+{
+  "name": "githubrelease",
+  "version": "0.0.0",
+  "description": "CLI tool for GitHub release management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified, so go write some!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psyrendust/githubrelease.git"
+  },
+  "keywords": [
+    "github",
+    "release",
+    "changelog",
+    "cli",
+    "conventional-changelog",
+    "conventional-commits-detector",
+    "conventional-github-releaser",
+    "conventional-recommended-bump"
+  ],
+  "author": "Larry Gordon <lgordon@psyrendust.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/psyrendust/githubrelease/issues"
+  },
+  "homepage": "https://github.com/psyrendust/githubrelease#readme"
+}

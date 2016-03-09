@@ -2,17 +2,17 @@
   "name": "githubrelease",
   "version": "0.0.0",
   "description": "CLI tool for GitHub release management",
+  "license": "MIT",
   "main": "index.js",
+  "author": "Larry Gordon <lgordon@psyrendust.com>",
   "scripts": {
     "test": "echo \"Error: no test specified, so go write some!\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/psyrendust/githubrelease.git"
   "bin": {
     "githubrelease": "githubrelease",
     "_githubreleasehelper": "helper.js"
   },
+  "repository": "psyrendust/githubrelease",
   "keywords": [
     "github",
     "release",
@@ -23,12 +23,10 @@
     "conventional-github-releaser",
     "conventional-recommended-bump"
   ],
-  "author": "Larry Gordon <lgordon@psyrendust.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/psyrendust/githubrelease/issues"
   },
-  "homepage": "https://github.com/psyrendust/githubrelease#readme"
+  "homepage": "https://github.com/psyrendust/githubrelease",
   "dependencies": {
     "chalk-cli": "2.0.0",
     "conventional-changelog-cli": "1.1.1",

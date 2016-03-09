@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/psyrendust/githubrelease.git"
+  "bin": {
+    "githubrelease": "githubrelease",
+    "_githubreleasehelper": "helper.js"
   },
   "keywords": [
     "github",

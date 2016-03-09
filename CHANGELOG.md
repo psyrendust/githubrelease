@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/psyrendust/githubrelease/compare/v0.1.1...v0.1.2) (2016-03-09)
+
+
+### Bug Fixes
+
+* **githubrelease:** landedMessage not reporting shortsha ([aaed03b](https://github.com/psyrendust/githubrelease/commit/aaed03b))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/psyrendust/githubrelease/compare/v0.1.0...v0.1.1) (2016-03-09)
 

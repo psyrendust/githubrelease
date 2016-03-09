@@ -1,3 +1,13 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/psyrendust/githubrelease/compare/v0.1.2...v0.1.3) (2016-03-09)
+
+
+### Features
+
+* **gitignore:** add `.gitignore` to project ([4882cac](https://github.com/psyrendust/githubrelease/commit/4882cac))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/psyrendust/githubrelease/compare/v0.1.1...v0.1.2) (2016-03-09)
 

@@ -136,6 +136,17 @@ updateChangelog() {
     touch "$changelog"
   fi &&
   $conventionalChangelog -i CHANGELOG.md -s -p ${preset}
+  if [[ -z $argnoprompt ]]; then
+    echo ""
+    $chalk yellow "Review your \"$changelog\"."
+    $chalk yellow "Would you like to continue?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) break;;
+            No ) exit;;
+        esac
+    done
+  fi
 }
 
 # Add the <changelog> to Git and commit it
@@ -350,7 +361,16 @@ step      : $step
 noprompts : $argnoprompt
 EOF
 $chalk cyan "============================"
-
+if [[ -z $argnoprompt ]]; then
+  echo ""
+  $chalk yellow "Based on the config above would you like to continue?"
+  select yn in "Yes" "No"; do
+      case $yn in
+          Yes ) break;;
+          No ) exit;;
+      esac
+  done
+fi
 
 # githubrelease -l
 # githubrelease -l -b minor

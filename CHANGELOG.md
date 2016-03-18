@@ -1,3 +1,51 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/psyrendust/githubrelease/compare/v0.1.3...v0.2.0) (2016-03-18)
+
+
+### Bug Fixes
+
+* **githubrelease:** account for "does not exist" error when there is a preset mismatch ([9a7a3e6](https://github.com/psyrendust/githubrelease/commit/9a7a3e6))
+
+### Features
+
+* **githubrelease:** add `--silent` flag to `npm install` to silence warning output ([9dd91a9](https://github.com/psyrendust/githubrelease/commit/9dd91a9))
+* **githubrelease:** add `-n` flag to no display any prompts ([acb7f77](https://github.com/psyrendust/githubrelease/commit/acb7f77))
+* **githubrelease:** add better descriptions for `preset` and `bump` in config output ([6107f36](https://github.com/psyrendust/githubrelease/commit/6107f36))
+* **githubrelease:** add user prompts after config display and changelog edit ([0038702](https://github.com/psyrendust/githubrelease/commit/0038702))
+
+
+### BREAKING CHANGES
+
+* githubrelease: A prompt will now display after a changelog edit has occurred. This will allow
+the user to review the changelog and make edits before it is commited to git.
+You are given 2 options: continue onto the next step; exit out of the program.
+
+A prompt will now display after showing the config. This will allow the user to
+review the config settings before continuing onto the first step of the program.
+
+You may bypass the prompts by passing in a new `-n` (*noprompt*) flag. The `-n`
+flag will bypass any prompts in the program.
+
+Example:
+
+```
+githubrelease -n
+```
+* githubrelease: If the preset is incorrect when calling `conventional-recommended-bump` `stderr`
+will display a message that the *"<preset> does not exits"*. This may be the case
+when a preset is not passed in as an argument and `conventional-commits-detector`
+returns a different commit message style than what is being used. If this is the
+case we reset the `preset` to `angular` and continue on. If the wrong preset is
+present during the changelog edit process you will notice that there will be no
+entries written for the current release. If this is the case you should enter a
+present of your choosing:
+
+```
+githubrelease -P ember
+```
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/psyrendust/githubrelease/compare/v0.1.2...v0.1.3) (2016-03-09)
 

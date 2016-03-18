@@ -107,7 +107,7 @@ rebaseDevelopOntoMaster() {
 runTests() {
   log "runTests"
   $trash node_modules &>/dev/null
-  npm install
+  npm install --silent
   npm run test
 }
 

@@ -327,7 +327,10 @@ done
 [[ -n $argdevelop ]] && develop=$argdevelop || develop=$defaultdevelop
 [[ -n $argpreset ]] && preset=$argpreset || preset=$($conventionalCommitsDetector)
 [[ -n $argstep ]] && step=$argstep || step=$defaultstep
-[[ -n $argbump ]] && bump=$argbump || bump=$($conventionalRecommendedBump -p ${preset})
+# Check preset and default to "angular"
+[[ "$($conventionalRecommendedBump -p ${preset} 2>&1)" == *"does not exist"* ]] && preset="angular"
+[[ -n $argbump ]] && bump=$argbump || $($conventionalRecommendedBump -p ${preset} 2> /dev/null)
+
 counter=$step
 
 # Output config setup

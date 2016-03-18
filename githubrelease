@@ -131,8 +131,9 @@ bumpPackage() {
 # Generate a changelog entry and save it to <changelog>
 updateChangelog() {
   log "updateChangelog"
-  if [[ ! -f "./CHANGELOG.md" ]]; then
-    touch "./CHANGELOG.md"
+  local changelog="./CHANGELOG.md"
+  if [[ ! -f "$changelog" ]]; then
+    touch "$changelog"
   fi &&
   $conventionalChangelog -i CHANGELOG.md -s -p ${preset}
 }

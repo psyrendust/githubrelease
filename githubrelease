@@ -343,8 +343,8 @@ changelog : $changelog
 remote    : $remote
 master    : $master
 develop   : $develop
-bump      : $bump | $($conventionalRecommendedBump -p $($conventionalCommitsDetector))
-preset    : $preset | $($conventionalCommitsDetector)
+preset    : $preset <detected: "$($conventionalCommitsDetector)", chosen: "$preset">
+bump      : $bump <detected: "$($conventionalRecommendedBump -p $($conventionalCommitsDetector) 2> /dev/null)", chosen: "$bump">
 counter   : $counter
 step      : $step
 noprompts : $argnoprompt

@@ -206,6 +206,7 @@ FLAG OPTIONS:
    -l     Generate a changelog entry and save it to <changelog>.
    -p     Push <master>, <develop>, and tags to <remote>.
    -u     Update <master> and <develop> branches from <remote> using rebase.
+   -n     Do not display any prompts
 
 ARGUMENT OPTIONS:
    -c     Location of the <changelog>. Defaults to 'CHANGELOG.md'.
@@ -249,6 +250,7 @@ EOF
 arglog=
 argpull=
 argpush=
+argnoprompt=
 argchangelog=
 argmaster=
 argdevelop=
@@ -267,7 +269,7 @@ step=
 bump=
 
 # Grab command line arguments and flags
-while getopts "hvlupc:r:m:d:P:s:b:" OPTION
+while getopts "hvlupnc:r:m:d:P:s:b:" OPTION
 do
   case $OPTION in
     h)
@@ -286,6 +288,9 @@ do
       ;;
     p)
       argpush=1
+      ;;
+    n)
+      argnoprompt=1
       ;;
     c)
       argchangelog=$OPTARG
@@ -339,6 +344,7 @@ bump      : $bump | $($conventionalRecommendedBump -p $($conventionalCommitsDete
 preset    : $preset | $($conventionalCommitsDetector)
 counter   : $counter
 step      : $step
+noprompts : $argnoprompt
 EOF
 $chalk cyan "============================"
 

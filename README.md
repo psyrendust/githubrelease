@@ -50,6 +50,7 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 * `-l`: Generate a changelog entry and save it to `<changelog>`.
 * `-p`: Push `<master>`, `<develop>`, and tags to `<remote>`.
 * `-u`: Update `<master>` and `<develop>` branches from `<remote>` using rebase.
+* `-n`: Do not display any prompts.
 
 ### Argument options
 * `-c`: Location of the `<changelog>`. Defaults to `CHANGELOG.md`.

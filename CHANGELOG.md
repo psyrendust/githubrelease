@@ -1,3 +1,16 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/psyrendust/githubrelease/compare/v0.2.0...v0.2.1) (2016-03-30)
+
+
+### Features
+
+* **githubrelease:** add output for `currVersion` and `nextVersion` to setup info ([b5d3eaa](https://github.com/psyrendust/githubrelease/commit/b5d3eaa))
+* **helper.js:** add `semver` package to project ([6060f34](https://github.com/psyrendust/githubrelease/commit/6060f34))
+* **helper.js:** add feature to get next semver version suggestion ([cdfc89e](https://github.com/psyrendust/githubrelease/commit/cdfc89e))
+* **npmrc:** add `.npmrc` file to project with `save-exact=true` setting ([f21b1e1](https://github.com/psyrendust/githubrelease/commit/f21b1e1))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/psyrendust/githubrelease/compare/v0.1.3...v0.2.0) (2016-03-18)
 

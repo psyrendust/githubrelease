@@ -344,6 +344,10 @@ done
 
 counter=$step
 
+# Config setup info
+currVersion=$(cat package.json | $json version)
+nextVersion=$(_githubreleasehelper --inc $currVersion --release $bump)
+
 # Output config setup
 $chalk cyan "========== CONFIG =========="
 $chalk white << EOF
@@ -359,6 +363,8 @@ bump      : $bump <detected: "$($conventionalRecommendedBump -p $($conventionalC
 counter   : $counter
 step      : $step
 noprompts : $argnoprompt
+currVersion   : $currVersion
+nextVersion   : $nextVersion
 EOF
 $chalk cyan "============================"
 if [[ -z $argnoprompt ]]; then

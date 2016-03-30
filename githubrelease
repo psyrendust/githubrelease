@@ -351,20 +351,20 @@ nextVersion=$(_githubreleasehelper --inc $currVersion --release $bump)
 # Output config setup
 $chalk cyan "========== CONFIG =========="
 $chalk white << EOF
-log       : $arglog
-pull      : $argpull
-push      : $argpush
-changelog : $changelog
-remote    : $remote
-master    : $master
-develop   : $develop
-preset    : $preset <detected: "$($conventionalCommitsDetector)", chosen: "$preset">
-bump      : $bump <detected: "$($conventionalRecommendedBump -p $($conventionalCommitsDetector) 2> /dev/null)", chosen: "$bump">
-counter   : $counter
-step      : $step
-noprompts : $argnoprompt
+log           : $arglog
+pull          : $argpull
+push          : $argpush
+changelog     : $changelog
+remote        : $remote
+master        : $master
+develop       : $develop
+preset        : $preset <detected: "$($conventionalCommitsDetector)", chosen: "$preset">
+bump          : $bump <detected: "$($conventionalRecommendedBump -p $($conventionalCommitsDetector) 2> /dev/null)", chosen: "$bump">
 currVersion   : $currVersion
 nextVersion   : $nextVersion
+counter       : $counter
+step          : $step
+noprompts     : $argnoprompt
 EOF
 $chalk cyan "============================"
 if [[ -z $argnoprompt ]]; then

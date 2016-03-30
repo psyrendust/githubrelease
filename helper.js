@@ -2,6 +2,7 @@
 
 var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
+var semver = require('semver');
 
 if (argv.version) {
   console.log(require('./package.json').version); // eslint-disable-line

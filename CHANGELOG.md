@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/psyrendust/githubrelease/compare/v0.2.1...v0.2.2) (2016-04-13)
+
+
+### Bug Fixes
+
+* **githubrelease:** `line 343: minor: command not found if missing argument `-b` ([ef8e6a4](https://github.com/psyrendust/githubrelease/commit/ef8e6a4))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/psyrendust/githubrelease/compare/v0.2.0...v0.2.1) (2016-03-30)
 

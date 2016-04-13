@@ -340,7 +340,7 @@ done
 [[ -n $argstep ]] && step=$argstep || step=$defaultstep
 # Check preset and default to "angular"
 [[ "$($conventionalRecommendedBump -p ${preset} 2>&1)" == *"does not exist"* ]] && preset="angular"
-[[ -n $argbump ]] && bump=$argbump || $($conventionalRecommendedBump -p ${preset} 2> /dev/null)
+[[ -n $argbump ]] && bump=$argbump || bump=$($conventionalRecommendedBump -p ${preset} 2> /dev/null)
 
 counter=$step
 

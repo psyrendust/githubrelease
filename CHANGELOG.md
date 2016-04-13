@@ -1,3 +1,13 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/psyrendust/githubrelease/compare/v0.2.2...v0.3.0) (2016-04-13)
+
+
+### Features
+
+* **githubrelease:** add flag `-t` to not trash the node_modules folder ([7e12bb5](https://github.com/psyrendust/githubrelease/commit/7e12bb5))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/psyrendust/githubrelease/compare/v0.2.1...v0.2.2) (2016-04-13)
 

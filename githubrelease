@@ -106,7 +106,9 @@ rebaseDevelopOntoMaster() {
 # Run npm tests
 runTests() {
   log "runTests"
-  $trash node_modules &>/dev/null
+  if [[ -z $argnotrashnodemodules ]]; then
+    $trash node_modules &>/dev/null
+  fi
   npm install --silent
   npm run test
 }
@@ -218,6 +220,7 @@ FLAG OPTIONS:
    -p     Push <master>, <develop>, and tags to <remote>.
    -u     Update <master> and <develop> branches from <remote> using rebase.
    -n     Do not display any prompts
+   -t     Do not trash the node_modules folder before running npm run test.
 
 ARGUMENT OPTIONS:
    -c     Location of the <changelog>. Defaults to 'CHANGELOG.md'.
@@ -262,6 +265,7 @@ arglog=
 argpull=
 argpush=
 argnoprompt=
+argnotrashnodemodules=
 argchangelog=
 argmaster=
 argdevelop=
@@ -280,7 +284,7 @@ step=
 bump=
 
 # Grab command line arguments and flags
-while getopts "hvlupnc:r:m:d:P:s:b:" OPTION
+while getopts "hvlupntc:r:m:d:P:s:b:" OPTION
 do
   case $OPTION in
     h)
@@ -302,6 +306,9 @@ do
       ;;
     n)
       argnoprompt=1
+      ;;
+    t)
+      argnotrashnodemodules=1
       ;;
     c)
       argchangelog=$OPTARG
@@ -365,6 +372,7 @@ nextVersion   : $nextVersion
 counter       : $counter
 step          : $step
 noprompts     : $argnoprompt
+notrashnodemodules: $argnotrashnodemodules
 EOF
 $chalk cyan "============================"
 if [[ -z $argnoprompt ]]; then

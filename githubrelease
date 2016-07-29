@@ -295,7 +295,7 @@ step=
 bump=
 
 # Grab command line arguments and flags
-while getopts "hvlupntc:r:m:d:P:s:b:" OPTION
+while getopts "hvlupntTc:r:m:d:P:s:b:" OPTION
 do
   case $OPTION in
     h)

@@ -51,6 +51,8 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 * `-p`: Push `<master>`, `<develop>`, and tags to `<remote>`.
 * `-u`: Update `<master>` and `<develop>` branches from `<remote>` using rebase.
 * `-n`: Do not display any prompts.
+* `-t`: Do not trash the `node_modules` folder before running npm run test.
+* `-T`: Do not create a git tag.
 
 ### Argument options
 * `-c`: Location of the `<changelog>`. Defaults to `CHANGELOG.md`.
@@ -71,7 +73,7 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 7. Save a changelog entry to `<changelog>`.
 8. Commit `<changelog>` update to Git.
 9. Reset `package.json` by moveing `_package.json` to `package.json`.
-10. Run `npm version` command, which bumps `package.json` and creates a tag.
+10. Run `npm version` command, which bumps `package.json` and creates a tag. No git tag will be created if `-T` is passed.
 11. Rebase `<master>` onto `<develop>`.
 12. Push `<master>`, `<develop>`, and tags to `<remote>`.
 13. Run [conventional-github-releaser][conventional-github-releaser] to create a release in GitHub.
@@ -86,6 +88,7 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 githubrelease -u
 githubrelease -p
 githubrelease -b patch
+githubrelease -tTb minor
 ```
 
 Or just do it all in one command.

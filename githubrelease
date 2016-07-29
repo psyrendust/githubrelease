@@ -156,7 +156,7 @@ addChangelog() {
   log "addChangelog"
   local version=$(cat package.json | $json version)
   git add CHANGELOG.md
-  git commit -m"docs(CHANGELOG): $version"
+  git commit -m "docs(CHANGELOG): $version"
 }
 
 # Reset the package.json to the backup made earlier
@@ -168,8 +168,16 @@ resetPackage() {
 # Using npm, bump the package.json version, create new tag, and commit change
 # to Git
 npmBump() {
-  log "npmBump"
-  npm version ${bump} -m "chore(release): %s"
+  if [[ -z $argnogittag ]]; then
+    log "npmBump: create tag"
+    npm version ${bump} -m "chore(release): %s"
+  else
+    log "npmBump: only bump"
+    npm --no-git-tag-version version ${bump} &>/dev/null
+    local version=$(cat package.json | $json version)
+    git add package.json
+    git commit -m "chore(release): $version"
+  fi
 }
 
 # Rebase the <master> branch onto <develop>
@@ -221,6 +229,7 @@ FLAG OPTIONS:
    -u     Update <master> and <develop> branches from <remote> using rebase.
    -n     Do not display any prompts
    -t     Do not trash the node_modules folder before running npm run test.
+   -T     Do not create a git tag.
 
 ARGUMENT OPTIONS:
    -c     Location of the <changelog>. Defaults to 'CHANGELOG.md'.
@@ -244,7 +253,8 @@ AVAILABLE STEPS:
     7     Save a changelog entry to <changelog>.
     8     Commit <changelog> update to Git.
     9     Reset 'package.json' by moveing '_package.json' to 'package.json'.
-   10     Run 'npm version' command, which bumps 'package.json' and creates a tag.
+   10     Run 'npm version' command, which bumps 'package.json' and creates a
+          tag (only creates a tag if `-T` was not passed).
    11     Rebase <master> onto <develop>.
    12     Push <master>, <develop>, and tags to <remote>.
    13     Run 'conventional-github-releaser' to create a release in GitHub.
@@ -266,6 +276,7 @@ argpull=
 argpush=
 argnoprompt=
 argnotrashnodemodules=
+argnogittag=
 argchangelog=
 argmaster=
 argdevelop=
@@ -309,6 +320,9 @@ do
       ;;
     t)
       argnotrashnodemodules=1
+      ;;
+    T)
+      argnogittag=1
       ;;
     c)
       argchangelog=$OPTARG
@@ -372,6 +386,7 @@ nextVersion   : $nextVersion
 counter       : $counter
 step          : $step
 noprompts     : $argnoprompt
+nogittag      : $argnogittag
 notrashnodemodules: $argnotrashnodemodules
 EOF
 $chalk cyan "============================"

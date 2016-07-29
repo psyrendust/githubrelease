@@ -52,7 +52,7 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 * `-u`: Update `<master>` and `<develop>` branches from `<remote>` using rebase.
 * `-n`: Do not display any prompts.
 * `-t`: Do not trash the `node_modules` folder before running npm run test.
-* `-T`: Do not create a git tag.
+* `-T`: Do not create a git tag and do no run conventionalGithubReleaser.
 
 ### Argument options
 * `-c`: Location of the `<changelog>`. Defaults to `CHANGELOG.md`.

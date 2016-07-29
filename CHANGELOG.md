@@ -1,3 +1,13 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/psyrendust/githubrelease/compare/v0.3.0...v0.4.0) (2016-07-29)
+
+
+### Features
+
+* **README.md, githubrelease:** do not create a git tag if `-T` flag is passed ([917bb52](https://github.com/psyrendust/githubrelease/commit/917bb52))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/psyrendust/githubrelease/compare/v0.2.2...v0.3.0) (2016-04-13)
 

@@ -47,6 +47,7 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 ### Flag options
 * `-h`: Show this message.
 * `-v`: Display the version of this script.
+* `-f`: Display the flags used when showing config.
 * `-l`: Generate a changelog entry and save it to `<changelog>`.
 * `-p`: Push `<master>`, `<develop>`, and tags to `<remote>`.
 * `-u`: Update `<master>` and `<develop>` branches from `<remote>` using rebase.

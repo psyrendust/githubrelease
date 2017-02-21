@@ -1,3 +1,13 @@
+<a name="0.4.3"></a>
+## [0.4.3](https://github.com/psyrendust/githubrelease/compare/v0.4.2...v0.4.3) (2017-02-21)
+
+
+### Bug Fixes
+
+* **githubrelease:** `-T: command not found` error when executing `usage` ([0e7e8b2](https://github.com/psyrendust/githubrelease/commit/0e7e8b2))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/psyrendust/githubrelease/compare/v0.4.1...v0.4.2) (2016-07-29)
 

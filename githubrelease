@@ -219,6 +219,27 @@ defaultdevelop="develop"
 defaultchangelog="CHANGELOG.md"
 defaultstep=1
 
+# Usage descriptions
+flag_h="Show this message."
+flag_v="Display the version of this script."
+flag_f="Display the flags used when showing config."
+flag_l="Generate a changelog entry and save it to <changelog>."
+flag_p="Push <master>, <develop>, and tags to <remote>."
+flag_u="Update <master> and <develop> branches from <remote> using rebase."
+flag_n="Do not display any prompts"
+flag_t="Do not trash the node_modules folder before running npm run test."
+flag_T="Do not create a git tag and do no run conventionalGithubReleaser."
+args_c="Location of the <changelog>. Defaults to 'CHANGELOG.md'."
+args_m="The <master> branch. Defaults to 'master'."
+args_d="The <develop> branch. Defaults to 'develop'."
+args_r="The <remote> push and pull from. Defaults to 'origin'."
+args_P="The preset style used to generate the changelog. Examples include"
+args_P2="['angular' | 'jquery' ...]. Defaults to 'conventional-recommended-bump'."
+args_s="Allows you to start at a specific step. Useful for when the script"
+args_s2="fails before completing all steps. See AVAILABLE STEPS below."
+args_b="The semver you would like to use for the release (default: patch)."
+args_b2="Can be: [ major | minor | patch | v0.0.0 ]"
+
 usage() {
   cat << EOF
 usage: githubrelease options
@@ -226,26 +247,27 @@ usage: githubrelease options
 Release a npm package to github.
 
 FLAG OPTIONS:
-   -h     Show this message.
-   -v     Display the version of this script.
-   -l     Generate a changelog entry and save it to <changelog>.
-   -p     Push <master>, <develop>, and tags to <remote>.
-   -u     Update <master> and <develop> branches from <remote> using rebase.
-   -n     Do not display any prompts
-   -t     Do not trash the node_modules folder before running npm run test.
-   -T     Do not create a git tag and do no run conventionalGithubReleaser.
+   -h     $flag_h
+   -v     $flag_v
+   -f     $flag_f
+   -l     $flag_l
+   -p     $flag_p
+   -u     $flag_u
+   -n     $flag_n
+   -t     $flag_t
+   -T     $flag_T
 
 ARGUMENT OPTIONS:
-   -c     Location of the <changelog>. Defaults to 'CHANGELOG.md'.
-   -m     The <master> branch. Defaults to 'master'.
-   -d     The <develop> branch. Defaults to 'develop'.
-   -r     The <remote> push and pull from. Defaults to 'origin'.
-   -P     The preset style used to generate the changelog. Examples include
-          ['angular' | 'jquery' ...]. Defaults to 'conventional-recommended-bump'.
-   -s     Allows you to start at a specific step. Useful for when the script
-          fails before completing all steps. See AVAILABLE STEPS below.
-   -b     The semver you would like to use for the release (default: patch).
-          Can be: [ major | minor | patch | v0.0.0 ]
+   -c     $args_c
+   -m     $args_m
+   -d     $args_d
+   -r     $args_r
+   -P     $args_P
+          $args_P2
+   -s     $args_s
+          $args_s2
+   -b     $args_b
+          $args_b2
 
 AVAILABLE STEPS:
     1     Update <master> and <develop> branches from <remote> using rebase.
@@ -275,6 +297,7 @@ EXAMPLES:
 EOF
 }
 # Argument variables
+argflags=
 arglog=
 argpull=
 argpush=
@@ -297,11 +320,13 @@ remote=
 preset=
 step=
 bump=
+flagschosen=()
 
 # Grab command line arguments and flags
-while getopts "hvlupntTc:r:m:d:P:s:b:" OPTION
+while getopts "hvflpuntTc:r:m:d:P:s:b:" OPTION
 do
   case $OPTION in
+    # Flags
     h)
       usage
       exit 1
@@ -310,44 +335,62 @@ do
       echo "githubrelease v$(_githubreleasehelper --version)"
       exit 1
       ;;
+    f)
+      argflags=1
+      flagschosen+=("[-f] $flag_f")
+      ;;
     l)
       arglog=1
-      ;;
-    u)
-      argpull=1
+      flagschosen+=("[-l] $flag_l")
       ;;
     p)
       argpush=1
+      flagschosen+=("[-p] $flag_p")
+      ;;
+    u)
+      argpull=1
+      flagschosen+=("[-u] $flag_u")
       ;;
     n)
       argnoprompt=1
+      flagschosen+=("[-n] $flag_n")
       ;;
     t)
       argnotrashnodemodules=1
+      flagschosen+=("[-t] $flag_t")
       ;;
     T)
       argnogittag=1
+      flagschosen+=("[-T] $flag_T")
       ;;
+    # Flags with args
     c)
       argchangelog=$OPTARG
+      flagschosen+=("[-c] $args_c")
       ;;
     r)
       argremote=$OPTARG
+      flagschosen+=("[-r] $args_r")
       ;;
     m)
       argmaster=$OPTARG
+      flagschosen+=("[-m] $args_m")
       ;;
     d)
       argdevelop=$OPTARG
+      flagschosen+=("[-d] $args_d")
       ;;
     P)
       argpreset=$OPTARG
+      flagschosen+=("[-P] $args_P $args_P2")
       ;;
     s)
       argstep=$OPTARG
+      flagschosen+=("[-s] $args_s $args_s2")
       ;;
     b)
       argbump=$OPTARG
+      flagschosen+=("[-b] $args_b $args_b2")
       ;;
     ?)
       usage
@@ -355,6 +398,17 @@ do
       ;;
   esac
 done
+
+printflags() {
+  if [[ -n $argflags ]]; then
+    echo ""
+    echo ""
+    echo "Flags Chosen:"
+    for desc in "${flagschosen[@]}"; do
+      echo "$desc"
+    done
+  fi
+}
 
 # Parse arguments and apply defaults if an argument was not passed
 [[ -n $argchangelog ]] && changelog=$argchangelog || changelog=$defaultchangelog
@@ -391,7 +445,7 @@ counter       : $counter
 step          : $step
 noprompts     : $argnoprompt
 nogittag      : $argnogittag
-notrashnodemodules: $argnotrashnodemodules
+notrashnodemodules: $argnotrashnodemodules $(printflags)
 EOF
 $chalk cyan "============================"
 if [[ -z $argnoprompt ]]; then

@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/psyrendust/githubrelease/compare/v0.4.3...v0.5.0) (2017-02-21)
+
+
+### Features
+
+* **githubrelease:** add `-f` flag to display the flags used when showing config ([748efdc](https://github.com/psyrendust/githubrelease/commit/748efdc))
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/psyrendust/githubrelease/compare/v0.4.2...v0.4.3) (2017-02-21)
 

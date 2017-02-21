@@ -258,7 +258,7 @@ AVAILABLE STEPS:
     8     Commit <changelog> update to Git.
     9     Reset 'package.json' by moveing '_package.json' to 'package.json'.
    10     Run 'npm version' command, which bumps 'package.json' and creates a
-          tag (only creates a tag if `-T` was not passed).
+          tag (only creates a tag if '-T' was not passed).
    11     Rebase <master> onto <develop>.
    12     Push <master>, <develop>, and tags to <remote>.
    13     Run 'conventional-github-releaser' to create a release in GitHub.

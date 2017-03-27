@@ -33,15 +33,13 @@
 
 set -e
 
-scriptDir=`_githubreleasehelper -p`
-binDir="$scriptDir/node_modules/.bin"
-chalk="$binDir/chalk"
-conventionalChangelog="$binDir/conventional-changelog"
-conventionalCommitsDetector="$binDir/conventional-commits-detector"
-conventionalGithubReleaser="$binDir/conventional-github-releaser"
-conventionalRecommendedBump="$binDir/conventional-recommended-bump"
-json="$binDir/json"
-trash="$binDir/trash"
+chalk="$(_githubreleasehelper -p chalk)"
+conventionalChangelog="$(_githubreleasehelper -p conventional-changelog)"
+conventionalCommitsDetector="$(_githubreleasehelper -p conventional-commits-detector)"
+conventionalGithubReleaser="$(_githubreleasehelper -p conventional-github-releaser)"
+conventionalRecommendedBump="$(_githubreleasehelper -p conventional-recommended-bump)"
+json="$(_githubreleasehelper -p json)"
+trash="$(_githubreleasehelper -p trash)"
 shortsha=""
 
 

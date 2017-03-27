@@ -1,3 +1,13 @@
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/psyrendust/githubrelease/compare/v0.5.1...v0.5.2) (2017-03-27)
+
+
+### Bug Fixes
+
+* **helper.js:** conventional-commits-detector: No such file or directory ([4abb343](https://github.com/psyrendust/githubrelease/commit/4abb343))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/psyrendust/githubrelease/compare/v0.5.0...v0.5.1) (2017-02-21)
 

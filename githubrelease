@@ -120,6 +120,7 @@ getShortSha() {
 backupPackage() {
   log "backupPackage"
   cp package.json _package.json
+  [[ -f package-lock.json ]] && cp package-lock.json _package-lock.json
 }
 
 # Use npm to bump the version of the package.json
@@ -161,6 +162,7 @@ addChangelog() {
 resetPackage() {
   log "resetPackage"
   mv -f _package.json package.json
+  [[ -f package-lock.json ]] && mv -f _package-lock.json package-lock.json
 }
 
 # Using npm, bump the package.json version, create new tag, and commit change

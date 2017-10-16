@@ -69,11 +69,11 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 2. Push `<master>`, `<develop>`, and tags to `<remote>`.
 3. Run `npm test`
 4. Rebase `<develop>` onto `<master>`.
-5. Make a copy of `package.json` to `_package.json`.
+5. Make a copy of `package.json` to `_package.json` (also copy `package-lock.json` to `_package-lock.json` if it exists).
 6. Temporarily bump the semver of `package.json`.
 7. Save a changelog entry to `<changelog>`.
 8. Commit `<changelog>` update to Git.
-9. Reset `package.json` by moveing `_package.json` to `package.json`.
+9. Reset `package.json` by moving `_package.json` to `package.json` (also reset `_package-lock.json` to `package-lock.json` if it exists).
 10. Run `npm version` command, which bumps `package.json` and creates a tag. No git tag will be created if `-T` is passed.
 11. Rebase `<master>` onto `<develop>`.
 12. Push `<master>`, `<develop>`, and tags to `<remote>`.

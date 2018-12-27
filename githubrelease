@@ -176,7 +176,12 @@ resetPackage() {
 npmBump() {
   if [[ -z $argnogittag ]]; then
     log "npmBump: create tag"
-    ${npmclient} version ${bump} -m "chore(release): %s"
+    if [[ "${npmclient}" == "yarn" ]]; then
+      ${npmclient} config set version-git-message "chore(release): %s"
+      ${npmclient} version --new-version ${bump}
+    else
+      ${npmclient} version ${bump} -m "chore(release): %s"
+    fi
   else
     log "npmBump: only bump"
     if [[ "${npmclient}" == "yarn" ]]; then

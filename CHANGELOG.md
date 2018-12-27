@@ -1,3 +1,13 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/psyrendust/githubrelease/compare/v1.0.0...v1.0.1) (2018-12-27)
+
+
+### Bug Fixes
+
+* **githubrelease:** epic fail on backupPackage ([81f8d2d](https://github.com/psyrendust/githubrelease/commit/81f8d2d))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/psyrendust/githubrelease/compare/v0.5.3...v1.0.0) (2018-12-27)
 

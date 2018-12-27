@@ -57,6 +57,7 @@ You can find more details here: [Setup token for cli][setup-token-for-cli].
 
 ### Argument options
 * `-c`: Location of the `<changelog>`. Defaults to `CHANGELOG.md`.
+* `-C`: The NPM client to use. Defaults to `npm`.
 * `-m`: The `<master>` branch. Defaults to `master`.
 * `-d`: The `<develop>` branch. Defaults to `develop`.
 * `-r`: The `<remote>` push and pull from. Defaults to `origin`.
@@ -96,6 +97,12 @@ Or just do it all in one command.
 
 ```shell
 githubrelease -b patch
+```
+
+Use `yarn` instead of `npm`:
+
+```shell
+githubrelease -b patch -C yarn
 ```
 
 [conventional-github-releaser]: https://github.com/stevemao/conventional-github-releaser

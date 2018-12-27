@@ -121,12 +121,13 @@ backupPackage() {
   log "backupPackage"
   cp package.json _package.json
   [[ -f package-lock.json ]] && cp package-lock.json _package-lock.json
+  [[ -f yarn.lock ]] && cp yarn.lock _yarn.lock
 }
 
 # Use npm to bump the version of the package.json
 bumpPackage() {
   log "bumpPackage"
-  ${npmclient} --no-git-tag-version version ${bump} &>/dev/null
+  ${npmclient} version --no-git-tag-version ${bump} &>/dev/null
 }
 
 # Generate a changelog entry and save it to <changelog>
@@ -163,6 +164,7 @@ resetPackage() {
   log "resetPackage"
   mv -f _package.json package.json
   [[ -f package-lock.json ]] && mv -f _package-lock.json package-lock.json
+  [[ -f yarn.lock ]] && mv -f _yarn.lock yarn.lock
 }
 
 # Using npm, bump the package.json version, create new tag, and commit change

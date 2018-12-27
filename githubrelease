@@ -127,7 +127,11 @@ backupPackage() {
 # Use npm to bump the version of the package.json
 bumpPackage() {
   log "bumpPackage"
-  ${npmclient} version --no-git-tag-version ${bump} &>/dev/null
+  if [[ "${npmclient}" == "yarn" ]]; then
+    ${npmclient} version --no-git-tag-version --new-version ${bump} &>/dev/null
+  else
+    ${npmclient} version --no-git-tag-version ${bump} &>/dev/null
+  fi
 }
 
 # Generate a changelog entry and save it to <changelog>
@@ -175,7 +179,11 @@ npmBump() {
     ${npmclient} version ${bump} -m "chore(release): %s"
   else
     log "npmBump: only bump"
-    ${npmclient} version --no-git-tag-version ${bump} &>/dev/null
+    if [[ "${npmclient}" == "yarn" ]]; then
+      ${npmclient} version --no-git-tag-version --new-version ${bump} &>/dev/null
+    else
+      ${npmclient} version --no-git-tag-version ${bump} &>/dev/null
+    fi
     local version=$(cat package.json | $json version)
     git add package.json
     git commit -m "chore(release): $version"

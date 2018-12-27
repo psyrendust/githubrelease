@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/psyrendust/githubrelease/compare/v1.0.2...v1.0.3) (2018-12-27)
+
+
+### Bug Fixes
+
+* **githubrelease:** update version git message when using yarn ([c2bea8a](https://github.com/psyrendust/githubrelease/commit/c2bea8a))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/psyrendust/githubrelease/compare/v1.0.1...v1.0.2) (2018-12-27)
 

@@ -1,6 +1,6 @@
 {
   "name": "githubrelease",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI tool for GitHub release management",
   "license": "MIT",
   "main": "index.js",

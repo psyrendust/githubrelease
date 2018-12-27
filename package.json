@@ -5,6 +5,9 @@
   "license": "MIT",
   "main": "index.js",
   "author": "Larry Gordon <lgordon@psyrendust.com>",
+  "engines": {
+    "node": ">=6.9.0"
+  },
   "scripts": {
     "test": "echo \"Warning: no test specified, so go write some!\""
   },
@@ -28,14 +31,14 @@
   },
   "homepage": "https://github.com/psyrendust/githubrelease",
   "dependencies": {
-    "chalk-cli": "2.0.0",
-    "conventional-changelog-cli": "1.1.1",
-    "conventional-commits-detector": "0.1.1",
-    "conventional-github-releaser": "1.1.0",
-    "conventional-recommended-bump": "0.1.0",
-    "json": "9.0.3",
+    "chalk-cli": "4.1.0",
+    "conventional-changelog-cli": "2.0.11",
+    "conventional-commits-detector": "1.0.2",
+    "conventional-github-releaser": "3.1.2",
+    "conventional-recommended-bump": "4.0.4",
+    "json": "9.0.6",
     "minimist": "1.2.0",
-    "semver": "5.1.0",
-    "trash-cli": "1.2.0"
+    "semver": "5.6.0",
+    "trash-cli": "1.4.0"
   }
 }

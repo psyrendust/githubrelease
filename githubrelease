@@ -107,8 +107,8 @@ runTests() {
   if [[ -z $argnotrashnodemodules ]]; then
     $trash node_modules &>/dev/null
   fi
-  npm install --silent
-  npm run test
+  ${npmclient} install --silent
+  ${npmclient} run test
 }
 
 # Get the short sha
@@ -126,7 +126,7 @@ backupPackage() {
 # Use npm to bump the version of the package.json
 bumpPackage() {
   log "bumpPackage"
-  npm --no-git-tag-version version ${bump} &>/dev/null
+  ${npmclient} --no-git-tag-version version ${bump} &>/dev/null
 }
 
 # Generate a changelog entry and save it to <changelog>
@@ -170,10 +170,10 @@ resetPackage() {
 npmBump() {
   if [[ -z $argnogittag ]]; then
     log "npmBump: create tag"
-    npm version ${bump} -m "chore(release): %s"
+    ${npmclient} version ${bump} -m "chore(release): %s"
   else
     log "npmBump: only bump"
-    npm --no-git-tag-version version ${bump} &>/dev/null
+    ${npmclient} version --no-git-tag-version ${bump} &>/dev/null
     local version=$(cat package.json | $json version)
     git add package.json
     git commit -m "chore(release): $version"
@@ -217,6 +217,7 @@ defaultremote="origin"
 defaultmaster="master"
 defaultdevelop="develop"
 defaultchangelog="CHANGELOG.md"
+defaultnpmclient="npm"
 defaultstep=1
 
 # Usage descriptions
@@ -230,6 +231,7 @@ flag_n="Do not display any prompts"
 flag_t="Do not trash the node_modules folder before running npm run test."
 flag_T="Do not create a git tag and do no run conventionalGithubReleaser."
 args_c="Location of the <changelog>. Defaults to 'CHANGELOG.md'."
+args_C="The NPM client to use. Defaults to 'npm'."
 args_m="The <master> branch. Defaults to 'master'."
 args_d="The <develop> branch. Defaults to 'develop'."
 args_r="The <remote> push and pull from. Defaults to 'origin'."
@@ -259,6 +261,7 @@ FLAG OPTIONS:
 
 ARGUMENT OPTIONS:
    -c     $args_c
+   -C     $args_C
    -m     $args_m
    -d     $args_d
    -r     $args_r
@@ -305,6 +308,7 @@ argnoprompt=
 argnotrashnodemodules=
 argnogittag=
 argchangelog=
+argnpmclient=
 argmaster=
 argdevelop=
 argremote=
@@ -314,6 +318,7 @@ argbump=
 
 # Variables to use in script
 changelog=
+npmclient=
 master=
 develop=
 remote=
@@ -323,7 +328,7 @@ bump=
 flagschosen=()
 
 # Grab command line arguments and flags
-while getopts "hvflpuntTc:r:m:d:P:s:b:" OPTION
+while getopts "hvflpuntTc:C:r:m:d:P:s:b:" OPTION
 do
   case $OPTION in
     # Flags
@@ -367,6 +372,10 @@ do
     c)
       argchangelog=$OPTARG
       flagschosen+=("[-c] $args_c")
+      ;;
+    C)
+      argnpmclient=$OPTARG
+      flagschosen+=("[-C] $args_C")
       ;;
     r)
       argremote=$OPTARG
@@ -412,6 +421,7 @@ printflags() {
 
 # Parse arguments and apply defaults if an argument was not passed
 [[ -n $argchangelog ]] && changelog=$argchangelog || changelog=$defaultchangelog
+[[ -n $argnpmclient ]] && npmclient=$argnpmclient || npmclient=$defaultnpmclient
 [[ -n $argremote ]] && remote=$argremote || remote=$defaultremote
 [[ -n $argmaster ]] && master=$argmaster || master=$defaultmaster
 [[ -n $argdevelop ]] && develop=$argdevelop || develop=$defaultdevelop
@@ -434,6 +444,7 @@ log           : $arglog
 pull          : $argpull
 push          : $argpush
 changelog     : $changelog
+npmclient     : $npmclient
 remote        : $remote
 master        : $master
 develop       : $develop

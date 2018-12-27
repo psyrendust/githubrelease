@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/psyrendust/githubrelease/compare/v1.0.1...v1.0.2) (2018-12-27)
+
+
+### Bug Fixes
+
+* **githubrelease:** use --new-version flag for yarn ([1690d92](https://github.com/psyrendust/githubrelease/commit/1690d92))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/psyrendust/githubrelease/compare/v1.0.0...v1.0.1) (2018-12-27)
 

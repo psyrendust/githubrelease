@@ -1,3 +1,27 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/psyrendust/githubrelease/compare/v0.5.3...v1.0.0) (2018-12-27)
+
+
+### Chores
+
+* **package:** update dependencies and set Node requirement to LTS ([f7c9234](https://github.com/psyrendust/githubrelease/commit/f7c9234))
+
+
+### Features
+
+* **githubrelease:** allow the user to change the npm client ([5964aef](https://github.com/psyrendust/githubrelease/commit/5964aef))
+
+
+### BREAKING CHANGES
+
+* **package:** Updates the npm packages for conventional-changelog dependencies, which
+contains a breaking change that sets the package's minimum required Node
+version to be the oldest LTS currently supported by the Node Release
+working group. At this time, that is Node 6 (which is in its Maintenance
+LTS phase).
+
+
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/psyrendust/githubrelease/compare/v0.5.2...v0.5.3) (2017-10-16)
 
